@@ -22,7 +22,7 @@ jobs:
       run: pip install --upgrade pip
 
     - name: Install dependencies
-      run: pip install -r requirements.txt
+      run: pip install -r ../../requirements.txt
 
     - name: Run Python script
       run: python helloworld.py
