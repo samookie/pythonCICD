@@ -35,9 +35,9 @@ jobs:
         
     - name: Generate build artifact
       run: pip install wheel 
-        python setup.py sdist bdist_wheel
-        mkdir -p build-artifact
-        cp dist/* build-artifact/
+    - run: python setup.py sdist bdist_wheel
+    - run: mkdir -p build-artifact
+    - run: cp dist/* build-artifact/
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
