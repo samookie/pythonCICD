@@ -29,3 +29,17 @@ jobs:
 
     - name: Run Python script
       run: python helloWorld.py
+    
+    - name: Build application
+      run: python setup.py build
+        
+    - name: Generate build artifact
+      run: python setup.py sdist bdist_wheel
+        mkdir -p build-artifact
+        cp dist/* build-artifact/
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-application-build
+        path: build-artifact/
