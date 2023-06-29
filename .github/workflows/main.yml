@@ -50,10 +50,8 @@ jobs:
       with:
         name: my-application-build
         path: build-artifact/
-      
-    - name : deploy to azure
-      env:
-        AZURE_PUBLISH_PROFILE: ${{ secrets.AZURE_DEPLOY }}
-      run: echo "$AZURE_PUBLISH_PROFILE" | base64 -d > azure.publishsettings
-    - run: az login --service-principal --username "$AZURE_PUBLISH_PROFILE" --tenant <tenant-id>
-    - run: az webapp deployment source config-zip --resource-group <RsGRP> --name <pythonCICD> --src <build-artifact/>
+    - name: Deplay Azure
+    
+      uses: azure/webapps-deploy@v2
+      with:
+          publish-profile: ${{ secrets.AZURE_WEBAPP}}
