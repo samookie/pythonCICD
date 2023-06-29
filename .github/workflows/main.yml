@@ -45,12 +45,16 @@ jobs:
     - run: mkdir -p build-artifact
     - run: cp dist/* build-artifact/
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
+    - name: Zip
+      run: zip release.zip ./* -r
+    - name: Upload
+      uses: actions/upload-artifact@v3
       with:
-        name: my-application-build
-        path: build-artifact/
-    - name: Deplay Azure
+          name: node-app
+          path: release.zip
+    - name: Upload artifact
+      
+    - name: Deploy Azure
     
       uses: azure/webapps-deploy@v2
       with:
