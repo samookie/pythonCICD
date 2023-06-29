@@ -27,6 +27,15 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
+    - uses: actions/checkout@v2  
+    - name: Python Linter
+      uses: unnysid3up/python-linter@v0.1-beta.7
+      with:
+       source: "src"
+       mypy-options: "--ignore-missing-imports --show-error-codes"
+       pylint-options: "--rcfile=setup.cfg"
+       isort-options: "-w 100"
+       django: true
     - name: Run Python script
       run: python helloWorld.py
     
