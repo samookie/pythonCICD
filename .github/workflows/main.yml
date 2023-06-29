@@ -52,10 +52,8 @@ jobs:
       with:
           name: node-app
           path: release.zip
-    - name: Upload artifact
       
     - name: Deploy Azure
-    
       uses: azure/webapps-deploy@v2
       with:
           publish-profile: ${{ secrets.AZURE_WEBAPP}}
